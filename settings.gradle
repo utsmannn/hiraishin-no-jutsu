@@ -1,0 +1,3 @@
+rootProject.name='Hiraishin'
+include ':app'
+include ':hiraishin'
