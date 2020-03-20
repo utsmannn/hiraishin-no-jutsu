@@ -17,13 +17,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         test_hello.setOnClickListener {
-            HiraishinNoJutsu.getInstance().postIntent("oy", Intent().putExtra("nah", "oyklnkj"))
+            val intent = Intent().apply {
+                putExtra("event", "whatever")
+            }
+            HiraishinNoJutsu.getInstance().postIntent("oy", intent)
         }
 
         composite.hiraishinIntent("oy", this::subscriber)
+
+        HiraishinNoJutsu.getInstance().observer { key, composite ->
+
+        }
+
+        HiraishinNoJutsu.getInstance().observerIntent { key, intent, composite ->
+
+        }
     }
 
     private fun subscriber(intent: Intent) {
-        toast(intent.getStringExtra("nah"))
+        toast(intent.getStringExtra("event"))
     }
 }
